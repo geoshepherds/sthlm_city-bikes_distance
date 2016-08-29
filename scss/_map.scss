@@ -29,6 +29,11 @@ i {
 h2 {
   font-size: 1.6em;
   font-weight: 400;
+  margin-top: 0;
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 }
 a {
   color: $white;
@@ -54,7 +59,7 @@ a {
   top: -100%;
   bottom: 150%;
   right: 22px;
-  padding: 22px;
+  padding: 12px;
   opacity: 0;
   color: $white;
   background: $teal;
@@ -71,7 +76,7 @@ a {
     display: block;
     width: 50%;
     border: 1px dotted rgba($white, 0.4);
-    margin: 44px auto 22px auto;
+    margin: 22px auto;
     padding: 12px;
     text-align: center;
     text-transform: uppercase;
@@ -79,6 +84,9 @@ a {
     &:hover {
       border: 1px dotted rgba($white, 0.9);
       cursor: pointer;
+    }
+    @media screen and (min-width: 768px) {
+      margin: 44px auto 22px auto;
     }
   }
   @media screen and (min-width: 375px) {
