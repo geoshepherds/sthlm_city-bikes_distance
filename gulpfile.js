@@ -26,7 +26,7 @@ gulp.task('concatScripts', ['browserify'], function() {
     .pipe(gulp.dest('js'));
 });
 
-gulp.task('minifyScripts', ['concatScripts'], function() {
+gulp.task('minifyScripts', function() {
   return gulp.src('js/app.js')
     .pipe(uglify())
     .pipe(rename('app.min.js'))
