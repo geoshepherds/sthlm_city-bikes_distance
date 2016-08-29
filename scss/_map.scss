@@ -1,6 +1,24 @@
+
+// ------------
+// ------------
+// VARIABLES //
+// ------------
+// ------------
+
+// COLORS
+$teal   : #009688;
+$white  : #ffffff;
+
+
+
+
 body {
   margin:0;
   padding:0;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: 14px;
+  text-rendering: geometricPrecision;
 }
 strong {
   font-weight: 700;
@@ -10,7 +28,17 @@ i {
 }
 h2 {
   font-size: 1.6em;
-  font-weight: 700;
+  font-weight: 400;
+}
+a {
+  color: $white;
+  text-decoration: none;
+  border-bottom: 1px dotted $white;
+  opacity: .7;
+  transition: all .3s ease-in-out;
+  &:hover {
+    opacity: .95;
+  }
 }
 #map {
   position: absolute;
@@ -19,28 +47,69 @@ h2 {
   bottom: 0;
   right: 0;
   width: 100%;
-  & .leaflet-popup-pane h6 {
-    font-family: 'Space Mono', monospace;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: normal;
-    margin: 0;
-    padding: 4px;
-    & span {
-      font-weight: 700;
+}
+
+#legend {
+  position: absolute;
+  top: -100%;
+  bottom: 150%;
+  right: 22px;
+  padding: 22px;
+  opacity: 0;
+  color: $white;
+  background: $teal;
+  box-shadow: 0 0 24px darken($teal, 10%);
+  z-index: 10000;
+  transition: all .4s ease-out;
+  &.active {
+    top: 22px;
+    left: 22px;
+    bottom: 22px;
+    opacity: 1;
+  }
+  & .close-btn-container {
+    display: block;
+    width: 50%;
+    border: 1px dotted rgba($white, 0.4);
+    margin: 44px auto 22px auto;
+    padding: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+    &:hover {
+      border: 1px dotted rgba($white, 0.9);
+      cursor: pointer;
     }
   }
-  & .map-legend {
-    font-family: 'Space Mono', monospace;
-    font-weight: 400;
-    font-size: 14px;
-    & p {
-      font-size: 1em;
-      line-height: 1.2;
+  @media screen and (min-width: 375px) {
+    width: 300px;
+    &.active {
+      left: inherit;
+      bottom: inherit;
     }
-    & h2 {
-      font-size: 1.6em;
-      line-height: 1.4;
+  }
+}
+#legendIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  color: $white;
+  background: $teal;
+  box-shadow: -4px 4px 24px darken($teal, 10%);
+  z-index: 10000;
+  opacity: 0;
+  font-size: 1.2em;
+  transition: opacity .4s ease-out;
+  &.active {
+    opacity: 1;
+    & .legend-icon {
+      border-bottom: 1px dotted rgba($white, 0.4);
+      &:hover {
+        border-bottom: 1px dotted rgba($white, 0.9);
+        cursor: pointer;
+      }
     }
+
   }
 }

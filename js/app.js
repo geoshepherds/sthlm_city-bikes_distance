@@ -11,9 +11,26 @@ var map = new L.mapbox.map('map', 'mapbox.streets');
 var featureLayer = L.mapbox.featureLayer();
 featureLayer.loadURL('https://raw.githubusercontent.com/geoshepherds/sthlm_city-bikes_distance/master/data/citybikes.geojson');
 
+var legend = document.getElementById('legend');
+var legendIcon = document.getElementById('legendIcon');
+var closeBtn = document.getElementById('closeContainer');
 
-var legend = map.legendControl.addLegend(document.getElementById('legend').innerHTML);
-legend.setPosition('topright');
+
+function showLegend() {
+  legend.className += ' active';
+  legendIcon.className -= ' active';
+}
+showLegend();
+
+closeBtn.addEventListener('click', function() {
+  legend.className -= ' active';
+  setTimeout(function() {
+    legendIcon.className += ' active';
+  }, 200);
+});
+
+legendIcon.addEventListener('click', showLegend);
+
 
 var units = 'kilometers'; // units for distance measurement
 
