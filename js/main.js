@@ -8,7 +8,8 @@ L.mapbox.accessToken = accessToken;
 
 var map = new L.mapbox.map('map', 'mapbox.streets');
 var featureLayer = L.mapbox.featureLayer();
-featureLayer.loadURL('https://github.com/geoshepherds/sthlm_city-bikes_distance/blob/master/data/citybikes.geojson?short_path=329c331');
+featureLayer.loadURL('https://raw.githubusercontent.com/geoshepherds/sthlm_city-bikes_distance/master/data/citybikes.geojson');
+
 
 var legend = map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 legend.setPosition('topright');
